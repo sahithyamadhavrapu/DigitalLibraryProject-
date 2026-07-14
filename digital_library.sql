@@ -48,7 +48,7 @@ FROM IssuedBooks i
 JOIN Students s ON i.StudentID = s.StudentID
 JOIN Books b ON i.BookID = b.BookID
 WHERE i.ReturnDate IS NULL
-AND i.IssueDate < CURRENT_DATE - INTERVAL 14 DAY;
+AND i.IssueDate < Date('now','-4 days');
 
 --Popularity Index Query
 SELECT b.Category, COUNT(*) AS TotalBorrowed
@@ -60,7 +60,7 @@ ORDER BY TotalBorrowed DESC;
 
 --Remove Inactive Students(3 years)
 DELETE FROM Students
-WHERE LastBorrowDate < CURRENT_DATE - INTERVAL 3 YEAR;
+WHERE LastBorrowDate < Date('now','-3 years');
 
 ALTER TABLE Students
 ADD Status VARCHAR(20);
@@ -68,4 +68,4 @@ ADD Status VARCHAR(20);
 --or we can also do this instaed of our Delete Query by suing our Update Query.
 UPDATE Students
 SET Status = 'Inactive'
-WHERE LastBorrowDate < CURRENT_DATE - INTERVAL 3 YEAR;
+WHERE LastBorrowDate < Date('now','-3 years');
