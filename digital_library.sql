@@ -48,7 +48,7 @@ FROM IssuedBooks i
 JOIN Students s ON i.StudentID = s.StudentID
 JOIN Books b ON i.BookID = b.BookID
 WHERE i.ReturnDate IS NULL
-AND i.IssueDate < Date('now','-4 days');
+AND i.IssueDate < Date('now','-14 days');
 
 --Popularity Index Query
 SELECT b.Category, COUNT(*) AS TotalBorrowed
