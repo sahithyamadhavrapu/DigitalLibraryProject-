@@ -62,6 +62,9 @@ ORDER BY TotalBorrowed DESC;
 DELETE FROM Students
 WHERE LastBorrowDate < CURRENT_DATE - INTERVAL 3 YEAR;
 
+ALTER TABLE Students
+ADD Status VARCHAR(20);
+
 --or we can also do this instaed of our Delete Query by suing our Update Query.
 UPDATE Students
 SET Status = 'Inactive'
