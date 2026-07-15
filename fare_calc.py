@@ -61,5 +61,4 @@ def start_app():
     except:
         print("Error: check your inputs (numbers only for distance/hour)")
 
-if __name__ == "__main__":
-    start_app()
+start_app()
